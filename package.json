@@ -17,8 +17,8 @@
     "build": "npm run clean && npm run build:types && npm run build:js",
     "format": "prettier --write '**/*.{js,jsx,json,ts,tsx}'",
     "test": "jest --runInBand && npm run test:example:node:require && npm run test:example:node:import",
-    "test:unit": "jest --testPathPattern=.unit.test.ts",
-    "test:int": "jest --testPathPattern=.int.test.ts --runInBand",
+    "test:unit": "jest --selectProjects dom-axios-unit dom-fetch-unit node-axios-unit node-fetch-unit",
+    "test:int": "jest --selectProjects dom-axios-int dom-fetch-int node-axios-int node-fetch-int --runInBand",
     "test:format": "prettier --check .",
     "test:example:node:require": "node ./example/node/require.js",
     "test:example:node:import": "node --experimental-modules --es-module-specifier-resolution=node ./example/node/import.mjs",
@@ -66,7 +66,8 @@
     "rollup": "^4.3.0",
     "ts-jest": "^29.1.1",
     "typescript": "^5.2.2",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "whatwg-fetch": "^3.6.20"
   },
   "dependencies": {
     "axios": "^1.6.0"

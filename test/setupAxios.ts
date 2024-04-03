@@ -1,5 +1,3 @@
-import axiosAdapter from "../src/adapters/axiosAdapter";
+import * as axiosAdapter from "../src/adapters/axiosAdapter";
 
-jest.mock("../src/adapters/axiosAdapter");
-
-global.adapterFn = axiosAdapter;
+global.adapterFn = jest.spyOn(axiosAdapter, "default");

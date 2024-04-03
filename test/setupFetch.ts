@@ -1,6 +1,4 @@
-import fetchAdapter from "../src/adapters/fetchAdapter";
-
-jest.mock("../src/adapters/fetchAdapter");
+import * as fetchAdapter from "../src/adapters/fetchAdapter";
 
 global.adapter = "fetch";
-global.adapterFn = fetchAdapter;
+global.adapterFn = jest.spyOn(fetchAdapter, "default");
