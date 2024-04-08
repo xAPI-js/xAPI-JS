@@ -18,5 +18,8 @@ global.fetch = jest.fn(() =>
           "content-type": "application/json",
         },
       }),
+    text: () => Promise.resolve(""),
+    ok: true,
+    headers: new Headers(),
   } as Response)
 );
