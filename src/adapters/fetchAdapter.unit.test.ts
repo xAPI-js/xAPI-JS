@@ -44,4 +44,23 @@ describe("fetchAdapter", () => {
       })
     );
   });
+
+  it("Returns a rejected promise with error message if an error is encountered", async () => {
+    (fetch as jest.MockedFn<typeof fetch>).mockImplementationOnce(() =>
+      Promise.resolve({
+        text: () => Promise.resolve("i am error"),
+        ok: false,
+      } as Response)
+    );
+
+    const result = fetchAdapter({
+      url: "https://www.example.com",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    expect(result).rejects.toThrow("i am error");
+  });
 });
