@@ -20,14 +20,12 @@ const fetchAdapter: AdapterFunction = async ({
     const err = await response.text();
     throw new Error(err);
   }
-  let text: any = await response.text();
-  if (typeof text === "string") {
-    try {
-      text = JSON.parse(text);
-    } catch {}
-  }
+  let text: string = await response.text();
+  try {
+    text = JSON.parse(text);
+  } catch {}
   return {
-    data: text,
+    data: text as any,
     headers: Object.fromEntries(response.headers.entries()),
     status: response.status,
   };
