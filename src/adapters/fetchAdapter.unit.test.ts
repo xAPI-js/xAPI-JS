@@ -45,7 +45,7 @@ describe("fetchAdapter", () => {
     );
   });
 
-  it("Returns a rejected promise with error message if an error is encountered", async () => {
+  it("Returns a rejected promise with error message if an error is encountered", () => {
     (fetch as jest.MockedFn<typeof fetch>).mockImplementationOnce(() =>
       Promise.resolve({
         text: () => Promise.resolve("i am error"),
@@ -62,5 +62,29 @@ describe("fetchAdapter", () => {
     });
 
     expect(result).rejects.toThrow("i am error");
+  });
+
+  it("Parses fetch text as JSON", () => {
+    (fetch as jest.MockedFn<typeof fetch>).mockImplementationOnce(() =>
+      Promise.resolve({
+        text: () => Promise.resolve('{"foo": true}'),
+        ok: true,
+        headers: new Headers(),
+      } as Response)
+    );
+
+    const result = fetchAdapter({
+      url: "https://www.example.com",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    expect(result).resolves.toEqual(
+      expect.objectContaining({
+        data: { foo: true },
+      })
+    );
   });
 });
