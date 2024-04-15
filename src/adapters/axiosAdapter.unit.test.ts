@@ -1,8 +1,9 @@
 import axios from "axios";
 import axiosAdapter from "./axiosAdapter";
+import { isEdgeRuntime, testIf } from "../../test/jestUtils";
 
 describe("axiosAdapter", () => {
-  it("makes an axios network request", async () => {
+  testIf(!isEdgeRuntime())("makes an axios network request", async () => {
     axiosAdapter({
       url: "https://www.example.com",
       method: "POST",
