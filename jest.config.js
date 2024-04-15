@@ -16,15 +16,19 @@ module.exports = {
       displayName: "dom-axios-unit",
       testMatch: ["**/*.unit.test.ts"],
       testEnvironment: "jsdom",
-      setupFiles: ["./test/setupUnit.ts", "./test/setupAxios.ts"],
+      setupFiles: [
+        "./test/mockAxios.ts",
+        "./test/mockFetch.ts",
+        "./test/setupAxios.ts",
+      ],
     },
     {
       displayName: "dom-fetch-unit",
       testMatch: ["**/*.unit.test.ts"],
       testEnvironment: "jsdom",
       setupFiles: [
-        "./test/setupUnit.ts",
-        "./test/polyfillFetch.ts",
+        "./test/mockAxios.ts",
+        "./test/mockFetch.ts",
         "./test/setupFetch.ts",
       ],
     },
@@ -32,13 +36,21 @@ module.exports = {
       displayName: "node-axios-unit",
       testMatch: ["**/*.unit.test.ts"],
       testEnvironment: "node",
-      setupFiles: ["./test/setupUnit.ts", "./test/setupAxios.ts"],
+      setupFiles: [
+        "./test/mockAxios.ts",
+        "./test/mockFetch.ts",
+        "./test/setupAxios.ts",
+      ],
     },
     {
       displayName: "node-fetch-unit",
       testMatch: ["**/*.unit.test.ts"],
       testEnvironment: "node",
-      setupFiles: ["./test/setupUnit.ts", "./test/setupFetch.ts"],
+      setupFiles: [
+        "./test/mockAxios.ts",
+        "./test/mockFetch.ts",
+        "./test/setupFetch.ts",
+      ],
     },
     {
       displayName: "dom-axios-int",
