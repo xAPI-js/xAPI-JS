@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from "uuid";
+import crypto from "crypto";
 import {
   testActivity,
   testDocument,
@@ -20,7 +20,7 @@ forEachLRS((xapi) => {
     });
 
     test("can delete an activity profile with an etag", () => {
-      const profileId = uuidv4();
+      const profileId = crypto.randomUUID();
       return xapi
         .createActivityProfile({
           activityId: testActivity.id,
