@@ -1,3 +1,7 @@
+# 2.2.7 (16 Apr 2024)
+
+- Removed `babel-plugin-transform-class-properties` to patch security vulnerability ([#17](https://github.com/xapijs/xapi/security/dependabot/17))
+
 # 2.2.6 (16 Apr 2024)
 
 - Updated dependencies
