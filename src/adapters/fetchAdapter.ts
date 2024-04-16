@@ -23,6 +23,7 @@ const fetchAdapter: AdapterFunction = async ({
   let text: string = await response.text();
   try {
     text = JSON.parse(text);
+    // eslint-disable-next-line no-empty
   } catch {}
   return {
     data: text as any,

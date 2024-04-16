@@ -23,7 +23,13 @@ test("converts username and password into Basic Auth header", () => {
 });
 
 test("throws error if environment not supported", () => {
+  // @ts-expect-error Overriding global/window btoa
+  // eslint-disable-next-line no-global-assign
   if (typeof btoa === "function") btoa = undefined;
+  // @ts-expect-error Overriding global/window Buffer
+  // eslint-disable-next-line no-global-assign
   if (Buffer) Buffer = undefined;
-  expect(() => toBasicAuth("", "")).toThrowError();
+  expect(() => toBasicAuth("", "")).toThrow(
+    new Error("Environment does not support base64 conversion.")
+  );
 });
