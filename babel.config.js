@@ -10,8 +10,5 @@ module.exports = {
     ],
     "@babel/preset-typescript",
   ],
-  plugins: [
-    "transform-class-properties",
-    "@babel/plugin-proposal-optional-chaining",
-  ],
+  plugins: ["@babel/plugin-proposal-optional-chaining"],
 };
