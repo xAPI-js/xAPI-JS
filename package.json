@@ -1,6 +1,6 @@
 {
   "name": "@xapi/xapi",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "Communicate over xAPI using JavaScript.",
   "main": "dist/XAPI.cjs.js",
   "module": "dist/XAPI.esm.js",
@@ -38,6 +38,7 @@
     "url": "https://github.com/xapijs/xapi/issues"
   },
   "homepage": "https://www.xapijs.dev",
+  "funding": "https://github.com/sponsors/CookieCookson",
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
