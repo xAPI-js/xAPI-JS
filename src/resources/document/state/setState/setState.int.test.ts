@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from "uuid";
+import crypto from "crypto";
 import {
   testAgent,
   testActivity,
@@ -31,7 +31,7 @@ forEachLRS((xapi) => {
             activityId: testActivity.id,
             stateId: testStateId,
             state: testDocument,
-            registration: uuidv4(),
+            registration: crypto.randomUUID(),
           })
           .then((result) => {
             return expect(result.data).toBeDefined();

@@ -23,6 +23,7 @@ export function forEachLRS(
       const xapi: XAPI = new XAPI({
         endpoint: credential.endpoint,
         auth: auth,
+        adapter: global.adapter,
       });
       callbackfn(xapi, credential);
     });
