@@ -39,6 +39,7 @@
     "url": "https://github.com/xapijs/xapi/issues"
   },
   "homepage": "https://www.xapijs.dev",
+  "funding": "https://github.com/sponsors/CookieCookson",
   "devDependencies": {
     "@babel/core": "^7.23.2",
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
@@ -52,10 +53,9 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@types/jest": "^29.5.7",
     "@types/node": "^20.8.10",
-    "@typescript-eslint/eslint-plugin": "^6.9.1",
-    "@typescript-eslint/parser": "^6.9.1",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "babel-jest": "^29.7.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "crypto-js": "^4.2.0",
     "dotenv": "^16.3.1",
     "eslint": "^8.53.0",
