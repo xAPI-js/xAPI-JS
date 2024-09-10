@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from "uuid";
+import crypto from "crypto";
 import {
   testActivity,
   testAgent,
@@ -22,7 +22,7 @@ forEachLRS((xapi) => {
       });
 
       test("can delete all states for a registration", () => {
-        const registration = uuidv4();
+        const registration = crypto.randomUUID();
         return xapi
           .createState({
             agent: testAgent,

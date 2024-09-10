@@ -1,3 +1,9 @@
+# 3.0.0 (10 Sep 2024)
+
+- Added `adapter` property to `XAPI` constructor params, allowing a choice between `axios` (Default), `fetch` or a custom adapter function
+- Adds support for edge environments through the `fetch` adapter
+- Updated `axios` to patch security vulnerability ([CVE-2024-39338](https://github.com/advisories/GHSA-8hc4-vh64-cxmj))
+
 # 2.2.8 (31 Jul 2024)
 
 - Updated `braces` to patch security vulnerability

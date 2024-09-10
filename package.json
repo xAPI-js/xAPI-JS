@@ -1,6 +1,6 @@
 {
   "name": "@xapi/xapi",
-  "version": "2.2.8",
+  "version": "3.0.0",
   "description": "Communicate over xAPI using JavaScript.",
   "main": "dist/XAPI.cjs.js",
   "module": "dist/XAPI.esm.js",
@@ -16,9 +16,10 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build": "npm run clean && npm run build:types && npm run build:js",
     "format": "prettier --write '**/*.{js,jsx,json,ts,tsx}'",
-    "test": "jest --runInBand && npm run test:example:node:require && npm run test:example:node:import",
-    "test:unit": "jest --testPathPattern=.unit.test.ts",
-    "test:int": "jest --testPathPattern=.int.test.ts --runInBand",
+    "test": "jest --runInBand && npm run test:edge && npm run test:example:node:require && npm run test:example:node:import",
+    "test:edge": "jest --runInBand --config jest.config.edge.js",
+    "test:unit": "jest --selectProjects dom-axios-unit dom-fetch-unit node-axios-unit node-fetch-unit",
+    "test:int": "jest --selectProjects dom-axios-int dom-fetch-int node-axios-int node-fetch-int --runInBand",
     "test:format": "prettier --check .",
     "test:example:node:require": "node ./example/node/require.js",
     "test:example:node:import": "node --experimental-modules --es-module-specifier-resolution=node ./example/node/import.mjs",
@@ -44,6 +45,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-typescript": "^7.23.2",
+    "@edge-runtime/jest-environment": "^2.3.10",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.0.1",
@@ -66,7 +68,7 @@
     "rollup": "^4.3.0",
     "ts-jest": "^29.1.1",
     "typescript": "^5.2.2",
-    "uuid": "^9.0.1"
+    "whatwg-fetch": "^3.6.20"
   },
   "dependencies": {
     "axios": "^1.6.0"
