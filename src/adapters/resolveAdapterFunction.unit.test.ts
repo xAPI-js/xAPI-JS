@@ -23,9 +23,9 @@ describe("resolveAdapterFunction", () => {
   });
 
   it("Returns custom if function provided as parameter", () => {
-    const customAdapter: AdapterFunction = () =>
+    const customAdapter: AdapterFunction = <T = unknown>() =>
       Promise.resolve({
-        data: {} as any,
+        data: {} as T,
         headers: {},
         status: 0,
       });

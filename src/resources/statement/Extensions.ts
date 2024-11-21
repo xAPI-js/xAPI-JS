@@ -1,3 +1,3 @@
 export interface Extensions {
-  [uri: string]: any;
+  [uri: string]: unknown;
 }

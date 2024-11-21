@@ -1,8 +1,9 @@
 import axios from "axios";
 
 jest.mock("axios");
+const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-(axios.request as any).mockImplementation(() =>
+mockedAxios.request.mockImplementation(() =>
   Promise.resolve({
     headers: {
       "content-type": "application/json",
