@@ -1,4 +1,4 @@
-export type DocumentJson = { [key: string]: any };
+export type DocumentJson = { [key: string]: unknown };
 
 export type DocumentUnknown = unknown;
 
