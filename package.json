@@ -42,7 +42,7 @@
   "funding": "https://github.com/sponsors/CookieCookson",
   "devDependencies": {
     "@babel/core": "^7.23.2",
-    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "@babel/plugin-transform-optional-chaining": "^7.25.9",
     "@babel/preset-env": "^7.23.2",
     "@babel/preset-typescript": "^7.23.2",
     "@edge-runtime/jest-environment": "^3.0.4",
