@@ -64,9 +64,9 @@ test("can parse JSON objects in querystring", () => {
 });
 
 test("can coerce TinCan launch actor name if string array", () => {
-  const actor: Actor = {
+  const actor = {
     objectType: "Agent",
-    name: ["Test"] as any,
+    name: ["Test"],
   };
   const stringifyEncoded: string = encodeURIComponent(JSON.stringify(actor));
   return expect(
@@ -80,9 +80,9 @@ test("can coerce TinCan launch actor name if string array", () => {
 });
 
 test("can coerce TinCan launch actor mbox if string array", () => {
-  const actor: Actor = {
+  const actor = {
     objectType: "Agent",
-    mbox: ["test@test.com"] as any,
+    mbox: ["test@test.com"],
   };
   const stringifyEncoded: string = encodeURIComponent(JSON.stringify(actor));
   return expect(
@@ -96,14 +96,14 @@ test("can coerce TinCan launch actor mbox if string array", () => {
 });
 
 test("can coerce TinCan launch actor account if string array", () => {
-  const actor: Actor = {
+  const actor = {
     objectType: "Agent",
     account: [
       {
         accountServiceHomePage: "http://www.example.com",
         accountName: "ABCDEFGH|test@test.com",
       },
-    ] as any,
+    ],
   };
   const stringifyEncoded: string = encodeURIComponent(JSON.stringify(actor));
   return expect(
@@ -120,13 +120,13 @@ test("can coerce TinCan launch actor account if string array", () => {
 });
 
 test("can coerce TinCan launch actor account if string array with only account homepage", () => {
-  const actor: Actor = {
+  const actor = {
     objectType: "Agent",
     account: [
       {
         accountServiceHomePage: "http://www.example.com",
       },
-    ] as any,
+    ],
   };
   const stringifyEncoded: string = encodeURIComponent(JSON.stringify(actor));
   return expect(
@@ -142,13 +142,13 @@ test("can coerce TinCan launch actor account if string array with only account h
 });
 
 test("can coerce TinCan launch actor account if string array with only account name", () => {
-  const actor: Actor = {
+  const actor = {
     objectType: "Agent",
     account: [
       {
         accountName: "ABCDEFGH|test@test.com",
       },
-    ] as any,
+    ],
   };
   const stringifyEncoded: string = encodeURIComponent(JSON.stringify(actor));
   return expect(
