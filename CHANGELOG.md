@@ -1,3 +1,12 @@
+# 3.0.1 (21 Nov 2024)
+
+- Bumped development dependencies
+- Migrated to eslint 9.x
+- Fixed security vulnerabilities (CVE-2024-4067, CVE-2024-47068, CVE-2024-21538)
+- Various fixes and improvements for type safety
+- Added VSCode extension recommendations for development
+- Improved unit test code coverage
+
 # 3.0.0 (10 Sep 2024)
 
 - Added `adapter` property to `XAPI` constructor params, allowing a choice between `axios` (Default), `fetch` or a custom adapter function
