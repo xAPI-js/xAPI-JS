@@ -27,13 +27,12 @@ function coerceActor(actor: Actor): Actor {
 }
 
 export function getSearchQueryParamsAsObject(str: string): {
-  [key: string]: any;
+  [key: string]: string | number | boolean | Actor;
 } {
-  const obj: { [key: string]: any } = {};
+  const obj: { [key: string]: string | number | boolean | Actor } = {};
   if (str.indexOf("?") === -1) return obj;
   let queryString = str.substring(str.indexOf("?"));
   queryString = queryString.split("#").shift();
-  if (!queryString) return obj;
   const usp = new URLSearchParams(queryString);
   usp.forEach((val, key) => {
     try {
@@ -41,7 +40,7 @@ export function getSearchQueryParamsAsObject(str: string): {
     } catch {
       obj[key] = val;
     }
-    if (key === "actor") {
+    if (key === "actor" && typeof obj.actor === "object") {
       obj.actor = coerceActor(obj.actor);
     }
   });
