@@ -127,10 +127,12 @@ export * from "./resources/statement/voidStatement/VoidStatementParams";
 export * from "./resources/statement/voidStatements/VoidStatementsParams";
 
 interface RequestParams {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
   agent?: Agent;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 class XAPI {
   public static default = XAPI;
 
@@ -159,12 +161,12 @@ class XAPI {
     this.adapter = resolveAdapterFunction(params.adapter);
   }
 
-  protected requestResource(params: {
+  protected requestResource<T>(params: {
     resource: Resources;
     queryParams?: RequestParams;
     requestConfig?: AdapterRequest | undefined;
     requestOptions?: GetParamsBase;
-  }): AdapterPromise<any> {
+  }): AdapterPromise<T> {
     const extendedQueryParams = Object.assign({}, params.queryParams);
     if (params.requestOptions?.useCacheBuster) {
       extendedQueryParams["cachebuster"] = new Date().getTime().toString();
@@ -173,10 +175,10 @@ class XAPI {
     return this.requestURL(url, params.requestConfig);
   }
 
-  protected requestURL(
+  protected requestURL<T>(
     url: string,
     requestConfig?: AdapterRequest | undefined
-  ): AdapterPromise<any> {
+  ): AdapterPromise<T> {
     return this.adapter({
       url,
       method: requestConfig?.method || "GET",
@@ -201,7 +203,10 @@ class XAPI {
   private generateURL(resource: Resources, params: RequestParams): string {
     const queryString = Object.keys(params)
       .map((key) => {
-        let val = key === "agent" ? JSON.stringify(params[key]) : params[key];
+        let val =
+          typeof params[key] === "object"
+            ? JSON.stringify(params[key])
+            : params[key];
         val = encodeURIComponent(val);
         return `${key}=${val}`;
       })
@@ -213,6 +218,7 @@ class XAPI {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 interface XAPI {
   getAbout(params?: GetAboutParams): AdapterPromise<About>;
   getActivity(params: GetActivityParams): AdapterPromise<Activity>;

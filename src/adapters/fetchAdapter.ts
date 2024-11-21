@@ -1,13 +1,13 @@
 import { AdapterFunction } from ".";
 
-const fetchAdapter: AdapterFunction = async ({
+const fetchAdapter: AdapterFunction = async <T>({
   url,
   method,
   data,
   headers,
 }) => {
-  let body: any = data;
-  const contentType: string | undefined = headers["Content-Type"];
+  let body = data;
+  const contentType = headers["Content-Type"];
   if (contentType === "application/json") {
     body = JSON.stringify(body);
   }
@@ -20,13 +20,13 @@ const fetchAdapter: AdapterFunction = async ({
     const err = await response.text();
     throw new Error(err);
   }
-  let text: string = await response.text();
+  let text = await response.text();
   try {
     text = JSON.parse(text);
     // eslint-disable-next-line no-empty
   } catch {}
   return {
-    data: text as any,
+    data: text as T,
     headers: Object.fromEntries(response.headers.entries()),
     status: response.status,
   };
